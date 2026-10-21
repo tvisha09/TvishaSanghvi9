@@ -1,0 +1,260 @@
+/*
+ * Swadisht's identity, applied to the whole project page: the mustard and
+ * navy of its wordmark, with the deck's own cream tints. The shared
+ * case-study components read these variables.
+ */
+.theme {
+  --case-ink: #1a475c;
+  --case-ink-rgb: 26 71 92;
+  --case-head: #1a475c;
+  --case-body: #2f2f2f;
+  --case-body-2: #4a4a4a;
+  --case-tint: #fce6c3;
+  --case-soft: #fdf0da;
+  --case-tone2: #74c1c1;
+  --case-tone3: #f6bc5e;
+  --case-ring1: #fbe3bb;
+  --case-ring2: #fdeecb;
+  --case-ring3: #fef8ec;
+  --case-accent: #f6bc5e;
+  --case-bubble: #f6bc5e;
+  --case-num-bg: #fce6c3;
+  --case-num-pad: 0.3rem 0.65rem;
+  --case-num-color: #1a475c;
+  --case-card-top: 3px solid #f6bc5e;
+  --case-display: var(--font-block);
+  /* Chapters open on a plate-line, echoing the wordmark's underline */
+  --case-rule-border: 0;
+  --case-rule: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='6' viewBox='0 0 20 6'%3E%3Ccircle cx='3' cy='3' r='2.4' fill='%23f6bc5e'/%3E%3Cpath d='M10 3h8' stroke='%231a475c' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E")
+    top left / 20px 6px repeat-x;
+  --progress: #f6bc5e;
+}
+
+/* ---------- Brand opener ---------- */
+.brand {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 0.5rem;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  border-radius: clamp(14px, 2vw, 26px);
+  background: #f6bc5e;
+  color: #1a475c;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Tone-on-tone food doodles scattered at the edges, leaving the centre clear */
+.doodles {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(circle at 8% 15%, #1a475c 0 7px, transparent 8px),
+    radial-gradient(circle at 92% 20%, #1a475c 0 9px, transparent 10px),
+    radial-gradient(circle at 14% 82%, #1a475c 0 6px, transparent 7px),
+    radial-gradient(circle at 88% 78%, #1a475c 0 8px, transparent 9px),
+    radial-gradient(circle at 50% 94%, #1a475c 0 5px, transparent 6px),
+    radial-gradient(circle at 4% 48%, #1a475c 0 5px, transparent 6px),
+    radial-gradient(circle at 96% 50%, #1a475c 0 6px, transparent 7px);
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 360px;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tagline {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1a475c;
+}
+
+.brandNote {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  max-width: 50ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #27404c;
+}
+
+.brandNote strong {
+  font-style: italic;
+}
+
+.brandChips {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  list-style: none;
+}
+
+.brandChips li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.4rem;
+  border-radius: 999px;
+  background: rgb(26 71 92 / 0.12);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: #1a475c;
+}
+
+.brandChips i {
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(26 71 92 / 0.4);
+}
+
+/* ---------- Journey map ---------- */
+.journeyWrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent);
+  scrollbar-width: thin;
+}
+
+.journeyTable {
+  width: 100%;
+  min-width: 960px;
+  margin-right: 2.5rem;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.journeyCorner {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 6rem;
+  background: var(--paper);
+  text-align: left;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.journeyPhase {
+  padding: 0.9rem 0.6rem;
+  background: #f6bc5e;
+  color: #fff;
+  font-family: var(--case-display, var(--font-block)), sans-serif;
+  font-weight: 400;
+  font-size: 0.92rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-left: 2px solid #fdf0da;
+}
+
+.journeyStage {
+  padding: 0.6rem 0.6rem 0.8rem;
+  background: #fce6c3;
+  color: #1a475c;
+  font-family: var(--case-display, var(--font-block)), sans-serif;
+  font-weight: 400;
+  font-size: 0.72rem;
+  text-align: center;
+  text-transform: uppercase;
+  border-left: 2px solid #fdf0da;
+}
+
+.journeyRowLabel {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  width: 6rem;
+  background: var(--paper);
+  padding: 0.9rem 0.6rem 0.9rem 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--muted);
+  vertical-align: top;
+}
+
+.journeyCell {
+  padding: 0.9rem 0.6rem;
+  background: #fdf0da;
+  border-left: 2px solid var(--paper);
+  border-top: 2px solid var(--paper);
+  vertical-align: top;
+  color: #2f2f2f;
+}
+
+.journeyEmotionCell {
+  padding: 0;
+  background: #fdf0da;
+  border-top: 2px solid var(--paper);
+}
+
+.journeyEmotion {
+  position: relative;
+  height: 7rem;
+  margin: 0.5rem 0;
+}
+
+.journeyEmotionSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.journeyBaseline {
+  stroke: #1a475c;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  opacity: 0.4;
+}
+
+.journeyEmotionLine {
+  fill: none;
+  stroke: #3b7c3a;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journeyEmoji {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+@media (max-width: 560px) {
+  .journeyCorner,
+  .journeyRowLabel {
+    width: 4.5rem;
+  }
+}

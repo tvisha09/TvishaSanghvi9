@@ -1,0 +1,135 @@
+.wrap {
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--case-ink, #1d1d1b);
+  border-radius: 10px;
+  background: var(--case-tint, #f1f1ef);
+  cursor: grab;
+  touch-action: none;
+}
+
+.frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 50% 50%;
+  transition: transform 0.08s linear;
+  user-select: none;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+/* ---------- Legend ---------- */
+/* A fixed key below the map, not inside the zoomed/panned frame */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+  width: fit-content;
+  margin-top: 0.9rem;
+  padding: clamp(0.75rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.4rem);
+  border-radius: 14px;
+  background: #ededed;
+  list-style: none;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(0.78rem, 0.68rem + 0.3vw, 0.9rem);
+  color: #2a2a6a;
+  white-space: nowrap;
+}
+
+.legendMuted {
+  color: #7d87e0 !important;
+}
+
+.legendIcon {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  flex: none;
+}
+
+.legendIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.caption {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.buttons button {
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1.5px solid var(--case-ink, #1d1d1b);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--case-ink, #1d1d1b);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.buttons button:hover:not(:disabled),
+.buttons button:focus-visible:not(:disabled) {
+  background: var(--case-ink, #1d1d1b);
+  color: var(--paper);
+}
+
+.buttons button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.pct {
+  min-width: 3.2em;
+  text-align: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.reset {
+  width: auto !important;
+  padding: 0 0.75rem;
+  border-radius: 999px !important;
+  font-size: 0.66rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

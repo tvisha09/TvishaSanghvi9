@@ -1,0 +1,342 @@
+/* Text and spec sheet on the left, framed cover on the right */
+.showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: end;
+}
+
+/*
+ * On the index, entries are a 3/4-scale version of the project hero,
+ * separated by a rule, with the cover alternating sides.
+ */
+.entry {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 345px);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(1.9rem, 3.75vw, 3rem) 0;
+  border-bottom: 0.5px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.25);
+}
+
+.entry:nth-child(even) {
+  grid-template-columns: minmax(0, 345px) minmax(0, 1fr);
+}
+
+.entry:nth-child(even) .coverWrap {
+  order: -1;
+}
+
+.entry .text {
+  max-width: 640px;
+}
+
+.entry:nth-child(even) .text {
+  justify-self: end;
+  width: 100%;
+}
+
+.text {
+  container-type: inline-size;
+}
+
+.kicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+/* Sized from the longest word (--chars) so a word never breaks mid-way */
+.title {
+  color: var(--case-head, inherit);
+  font-family: var(--case-display, var(--font-block)), sans-serif;
+  font-weight: 400;
+  font-size: min(7.5rem, calc(128cqi / var(--chars)));
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.entry .title {
+  font-size: min(4.1rem, calc(128cqi / var(--chars)));
+}
+
+.entry .kicker {
+  margin-bottom: 0.75rem;
+}
+
+.entry .subtitle {
+  margin-top: 0.75rem;
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.5rem);
+}
+
+.entry .description {
+  margin-top: 0.9rem;
+  font-size: 0.92rem;
+}
+
+.entry .spec {
+  margin-top: 1.4rem;
+}
+
+.entry .spec > div {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.entry .spec dd {
+  font-size: 0.82rem;
+}
+
+.entry .cta {
+  margin-top: 1.1rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.66rem;
+}
+
+.title a {
+  color: inherit;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 3px no-repeat;
+  transition: background-size 0.5s var(--ease);
+}
+
+.title a:hover,
+.title a:focus-visible {
+  outline: none;
+  background-size: 100% 3px;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 1rem + 1vw, 2rem);
+  line-height: 1.15;
+}
+
+.description {
+  margin-top: 1.25rem;
+  max-width: 58ch;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--case-body-2, #4a4843);
+}
+
+.spec {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 2rem;
+  border-top: 1.5px solid var(--case-ink, #1d1d1b);
+}
+
+.spec > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem 0.9rem 0;
+  border-bottom: 0.5px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.25);
+}
+
+.spec > div + div {
+  padding-left: 1rem;
+  border-left: 0.5px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.25);
+}
+
+.spec dt {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spec dd {
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid var(--case-ink, #1d1d1b);
+  color: var(--case-ink, #1d1d1b);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.cta span {
+  transition: transform 0.4s var(--ease);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  outline: none;
+  background: var(--case-ink, #1d1d1b);
+  color: var(--paper);
+}
+
+.cta:hover span,
+.cta:focus-visible span {
+  transform: translateX(4px);
+}
+
+/* Framed cover with HUD corner brackets */
+.coverLink {
+  display: block;
+}
+
+.cover {
+  position: relative;
+  border: 1px solid var(--case-ink, #1d1d1b);
+  background: var(--case-tint, #f1f1ef);
+  overflow: hidden;
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 70svh;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cover::before,
+.cover::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  border: 1.5px solid var(--paper);
+  mix-blend-mode: difference;
+  transition: inset 0.5s var(--ease);
+}
+
+.cover::before {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cover::after {
+  right: 10px;
+  bottom: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Light sweep across the cover on hover (index entries only) */
+.scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+
+.coverLink:hover .cover img {
+  transform: scale(1.04);
+}
+
+.coverLink:hover .scan {
+  transform: translateX(110%);
+  transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.coverLink:hover .cover::before {
+  top: 16px;
+  left: 16px;
+}
+
+.coverLink:hover .cover::after {
+  right: 16px;
+  bottom: 16px;
+}
+
+.coverCaption {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .showcase {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .coverWrap {
+    order: -1;
+  }
+
+  /* Index entries keep two columns, cover still alternating sides */
+  .entry {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
+    align-items: center;
+  }
+
+  .entry:nth-child(even) {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+  }
+
+  .entry .coverWrap {
+    order: 0;
+  }
+
+  .entry:nth-child(even) .coverWrap {
+    order: -1;
+  }
+}
+
+/* Phones: cover above the text, pushed alternately right and left */
+@media (max-width: 600px) {
+  .entry,
+  .entry:nth-child(even) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .entry .coverWrap,
+  .entry:nth-child(even) .coverWrap {
+    order: -1;
+    width: 72%;
+    justify-self: end;
+  }
+
+  .entry:nth-child(even) .coverWrap {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .spec {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .spec > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .spec > div:nth-child(2) {
+    padding-left: 0;
+    border-left: none;
+  }
+}

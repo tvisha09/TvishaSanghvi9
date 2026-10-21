@@ -1,0 +1,314 @@
+/*
+ * SeaRaksha's identity, applied to the whole project page: the navy of the
+ * logo card, the cyan of its bubbles, ice-blue tints and Poppins headings.
+ * The shared case-study components read these variables.
+ */
+.theme {
+  --case-ink: #2e4078;
+  --case-ink-rgb: 46 64 120;
+  --case-head: #2e4078;
+  --case-body: #34405a;
+  --case-body-2: #4c5873;
+  --case-tint: #e6f7fb;
+  --case-soft: #eef9fc;
+  --case-tone2: #3bb7d8;
+  --case-tone3: #a4eafc;
+  --case-ring1: #cdeef8;
+  --case-ring2: #e2f6fb;
+  --case-ring3: #f4fbfd;
+  --case-accent: #3bb7d8;
+  --case-bubble: #a4eafc;
+  --case-num-bg: #a4eafc;
+  --case-num-pad: 0.3rem 0.65rem;
+  --case-num-color: #2e4078;
+  --case-card-top: 3px solid #3bb7d8;
+  --case-display: var(--font-poppins);
+  /* Chapters open on a wave instead of a straight rule */
+  --case-rule-border: 0;
+  --case-rule: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='8' viewBox='0 0 40 8'%3E%3Cpath d='M0 4c5 0 5-3 10-3s5 3 10 3 5 3 10 3 5-3 10-3' fill='none' stroke='%232e4078' stroke-width='1.5'/%3E%3C/svg%3E")
+    top left / 40px 8px repeat-x;
+  --progress: #3bb7d8;
+}
+
+/* ---------- Brand opener ---------- */
+.brand {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(3.5rem, 7vw, 6rem);
+  border-radius: clamp(14px, 2vw, 26px);
+  background: #2e4078;
+  color: #f8f0e8;
+  overflow: hidden;
+}
+
+/* The logo card's cyan bubbles, spilling off the corner */
+.bubbles span {
+  position: absolute;
+  border-radius: 50%;
+  background: #a4eafc;
+}
+
+.bubbles span:nth-child(1) {
+  top: -3.5rem;
+  right: -2.5rem;
+  width: clamp(7rem, 14vw, 12rem);
+  aspect-ratio: 1;
+}
+
+.bubbles span:nth-child(2) {
+  top: clamp(4.5rem, 9vw, 8rem);
+  right: clamp(7rem, 15vw, 13rem);
+  width: clamp(1.6rem, 3vw, 2.6rem);
+  aspect-ratio: 1;
+}
+
+.bubbles span:nth-child(3) {
+  top: clamp(2.5rem, 5vw, 4.5rem);
+  right: clamp(10rem, 20vw, 17.5rem);
+  width: clamp(0.8rem, 1.4vw, 1.2rem);
+  aspect-ratio: 1;
+}
+
+/* Waves along the bottom edge */
+.brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(1.75rem, 3.5vw, 2.75rem);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40' preserveAspectRatio='none'%3E%3Cpath d='M0 14c15 0 15-8 30-8s15 8 30 8 15-8 30-8 15 8 30 8v26H0z' fill='%233bb7d8' opacity='.35'/%3E%3Cpath d='M0 24c15 0 15-8 30-8s15 8 30 8 15-8 30-8 15 8 30 8v16H0z' fill='%23a4eafc' opacity='.55'/%3E%3C/svg%3E")
+    bottom left / 120px 100% repeat-x;
+}
+
+.logo {
+  position: relative;
+  max-width: 420px;
+}
+
+.brandText {
+  position: relative;
+}
+
+.brandKicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a4eafc;
+}
+
+.brandLine {
+  margin-top: 0.9rem;
+  font-family: var(--font-poppins), sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.35rem, 1rem + 1.4vw, 2.3rem);
+  line-height: 1.2;
+}
+
+.brandNote {
+  margin-top: 1rem;
+  max-width: 40ch;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(248 240 232 / 0.8);
+}
+
+.brandChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  list-style: none;
+}
+
+.brandChips li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.4rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.brandChips i {
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 0.4);
+}
+
+@media (max-width: 760px) {
+  .brand {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Floating sea illustrations ---------- */
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Waves roll sideways by exactly one wavelength, so the loop is seamless */
+.drift1,
+.drift2,
+.drift3 {
+  animation: roll 16s linear infinite;
+}
+
+.drift2 {
+  animation-duration: 21s;
+  animation-direction: reverse;
+}
+
+.drift3 {
+  animation-duration: 12s;
+}
+
+@keyframes roll {
+  to {
+    transform: translateX(-200px);
+  }
+}
+
+.bob {
+  transform-box: fill-box;
+  transform-origin: 50% 80%;
+  animation: bob 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  from {
+    transform: translateY(0) rotate(-1.2deg);
+  }
+  to {
+    transform: translateY(6px) rotate(1.2deg);
+  }
+}
+
+.cloud {
+  animation: cloud 14s ease-in-out infinite alternate;
+}
+
+@keyframes cloud {
+  to {
+    transform: translateX(26px);
+  }
+}
+
+/* A fish arcs out of the water and back */
+.leap {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: leap 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes leap {
+  0%,
+  55%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 30px) rotate(0deg);
+  }
+  62% {
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-30px, -36px) rotate(-30deg);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-60px, 24px) rotate(-70deg);
+  }
+}
+
+.swim {
+  animation: swim 6s ease-in-out infinite alternate;
+}
+
+@keyframes swim {
+  to {
+    transform: translateX(-28px);
+  }
+}
+
+.glide {
+  animation: glide 5s ease-in-out infinite alternate;
+}
+
+@keyframes glide {
+  to {
+    transform: translate(-14px, 8px);
+  }
+}
+
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 4s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+.bubble {
+  transform-box: fill-box;
+  animation: bubble 3s ease-in infinite;
+}
+
+@keyframes bubble {
+  from {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-46px);
+  }
+}
+
+/* The net opens out as it's thrown */
+.cast {
+  transform-box: fill-box;
+  transform-origin: 100% 0;
+  animation: cast 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes cast {
+  from {
+    transform: scale(0.94) rotate(2deg);
+  }
+  to {
+    transform: scale(1.02) rotate(-1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art,
+  .art * {
+    animation: none !important;
+  }
+}

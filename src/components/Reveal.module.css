@@ -1,0 +1,15 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--delay);
+}
+
+.shown {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}

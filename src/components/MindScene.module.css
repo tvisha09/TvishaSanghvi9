@@ -1,0 +1,279 @@
+/*
+ * Timeline (seconds after "Access my mind" is clicked), about 3s in total:
+ * 0.1   construction lines fade in
+ * 0.25  skull outline and details draw in, camera eases closer
+ * 1.3   cranium cap lifts and tips, revealing the cut section
+ * 1.45  brain draws in
+ * 1.5   lower jaw drops away
+ * 1.55  camera dives into the opening (MindScene.tsx), stars warp past
+ * 2.4   the three cards land in the centre, on an arc that follows the brain
+ */
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Line weights are in screen pixels: --k converts them to skull units */
+.ink {
+  fill: none;
+  stroke: #1d1d1b;
+  stroke-width: calc(var(--w, 1) * var(--k, 1) * 1px);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heavy  { --w: 2.4; }
+.medium { --w: 1.3; }
+.light  { --w: 0.8; }
+
+.hatch {
+  --w: 0.5;
+  opacity: 0;
+  animation: fade 0.5s ease 0.85s forwards;
+}
+
+.hatch.dense {
+  --w: 0.45;
+}
+
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw var(--dur) cubic-bezier(0.65, 0, 0.35, 1) var(--d) forwards;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fade 0.3s ease 0.75s forwards;
+}
+
+/* Construction / drafting layer */
+.construction {
+  opacity: 0;
+  animation: fade 0.5s ease 0.1s forwards;
+}
+
+.hair,
+.centerline {
+  fill: none;
+  stroke: #9a978f;
+  stroke-width: calc(0.5 * var(--k, 1) * 1px);
+}
+
+.centerline {
+  stroke-dasharray: 14 4 2 4;
+}
+
+.mark {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-anchor: middle;
+  fill: #6f6c66;
+}
+
+/* Fills */
+.bone,
+.tooth,
+.tone,
+.void {
+  opacity: 0;
+  animation: fade 0.5s ease 0.25s forwards;
+}
+
+.bone,
+.boneSolid {
+  fill: #f1f1ef;
+}
+
+.tooth,
+.brain {
+  fill: var(--paper);
+}
+
+.tone {
+  fill: #a7a9ac;
+}
+
+.void {
+  fill: #2c2e32;
+  animation-delay: 0.55s;
+}
+
+/* Section poché: the solid band where the bone is cut */
+.poche,
+.afterLift {
+  opacity: 0;
+  animation: fade 0.3s ease 1.4s forwards;
+}
+
+.poche,
+.pocheSolid {
+  fill: #1d1d1b;
+  stroke: none;
+}
+
+/* Cranium cap */
+.cap {
+  transform-box: view-box;
+  transform-origin: var(--cap-origin);
+  animation: lift 0.65s cubic-bezier(0.7, 0, 0.2, 1) 1.3s forwards;
+}
+
+/* Lower jaw drops from its hinge, chin first, like it's falling away */
+.jaw {
+  transform-box: view-box;
+  transform-origin: var(--jaw-origin);
+  animation: fall 0.85s cubic-bezier(0.5, 0, 0.9, 0.5) 1.5s forwards;
+}
+
+.underside {
+  opacity: 0;
+  animation: fade 0.25s ease 1.45s forwards;
+}
+
+/* Cards: square, in a row, on an arc that echoes the dome of the brain */
+.cards {
+  --s: min(22vw, 26svh, 230px);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 26px);
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.card {
+  --y: 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--s);
+  aspect-ratio: 1;
+  padding: calc(var(--s) * 0.08);
+  background: var(--paper);
+  border: 1px solid #1d1d1b;
+  color: #1d1d1b;
+  text-decoration: none;
+  pointer-events: auto;
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(calc(var(--y) + 36px)) rotate(var(--tilt)) scale(0.94);
+  animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--d) forwards;
+  transition: box-shadow 0.4s var(--ease);
+}
+
+.side {
+  --y: calc(var(--s) * 0.14);
+}
+
+/* Inner hairline frame, like a drawing sheet border */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 0.5px solid rgba(29, 29, 27, 0.35);
+  pointer-events: none;
+  transition: inset 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+
+.card:hover,
+.card:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px #1d1d1b;
+}
+
+.card:hover::before,
+.card:focus-visible::before {
+  inset: 10px;
+  border-color: rgba(29, 29, 27, 0.7);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cardNum {
+  font-family: var(--font-sans), sans-serif;
+  font-size: max(0.6rem, calc(var(--s) * 0.05));
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.cardArrow {
+  font-size: max(0.8rem, calc(var(--s) * 0.07));
+  transition: transform 0.4s var(--ease);
+}
+
+.card:hover .cardArrow,
+.card:focus-visible .cardArrow {
+  transform: translateX(4px);
+}
+
+/* Illustration fills the space between the number and the title */
+.cardArt {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: 4% 0;
+}
+
+.cardTitle {
+  font-family: var(--font-block), sans-serif;
+  font-size: calc(var(--s) * 0.11);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .cards {
+    --s: min(29vw, 26svh);
+    gap: 6px;
+    padding: 0.5rem;
+  }
+
+  .card::before {
+    inset: 4px;
+  }
+
+  .cardTitle {
+    font-size: calc(var(--s) * 0.108);
+  }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fade {
+  to { opacity: 1; }
+}
+
+@keyframes lift {
+  to { transform: translate(0, var(--lift-y)) rotate(var(--lift-rot)); }
+}
+
+@keyframes fall {
+  to { transform: translate(-40px, 560px) rotate(-24deg); }
+}
+
+@keyframes rise {
+  to { opacity: 1; filter: blur(0); transform: translateY(var(--y)) rotate(var(--tilt)) scale(1); }
+}

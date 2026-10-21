@@ -1,0 +1,380 @@
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 4rem;
+}
+
+/* Intro: compact portrait beside the name and bio */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 6vw, 5rem);
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid #1d1d1b;
+}
+
+/* Hairline inner frame, like the cards on the home screen */
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 0.5px solid rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+
+.caption {
+  margin-top: 0.7rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.title {
+  font-family: var(--font-block), sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 0.9rem + 4.4vw, 5.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.bio {
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+  max-width: 44ch;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.2rem, 1rem + 0.7vw, 1.6rem);
+  line-height: 1.38;
+}
+
+/* Sections share one rhythm */
+.section {
+  padding: clamp(3rem, 7vw, 6rem) 0;
+}
+
+.note {
+  margin: -1.5rem 0 2.25rem;
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* Disciplines: a ruled four-column table */
+.disciplines {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1.5px solid #1d1d1b;
+}
+
+.discipline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.6rem 1.4rem 2.2rem 0;
+  border-bottom: 0.5px solid rgba(29, 29, 27, 0.25);
+}
+
+.discipline + .discipline {
+  padding-left: 1.4rem;
+  border-left: 0.5px solid rgba(29, 29, 27, 0.25);
+}
+
+.num {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.disciplineTitle {
+  font-family: var(--font-block), sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 0.9rem + 0.7vw, 1.55rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.disciplineText {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #4a4843;
+}
+
+/* Languages: a ruled row of chips, like a short vocabulary of its own */
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1.75rem;
+  border-top: 1.5px solid #1d1d1b;
+}
+
+.language {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.75rem 1.2rem;
+  border: 1px solid #1d1d1b;
+}
+
+.languageNum {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.languageName {
+  font-family: var(--font-block), sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Hobbies: a ruled grid of small line illustrations */
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1.5px solid #1d1d1b;
+}
+
+.hobby {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.2rem 1.2rem 2rem;
+  border-bottom: 0.5px solid rgba(29, 29, 27, 0.25);
+  border-left: 0.5px solid rgba(29, 29, 27, 0.25);
+  text-align: center;
+  transition: background 0.3s var(--ease);
+}
+
+.hobby:nth-child(3n+1) {
+  border-left: none;
+}
+
+.hobby:hover {
+  background: #f6f5f1;
+}
+
+.hobbyIcon {
+  width: clamp(2.4rem, 4vw, 3rem);
+  height: clamp(2.4rem, 4vw, 3rem);
+  color: #1d1d1b;
+  transition: transform 0.4s var(--ease);
+}
+
+.hobby:hover .hobbyIcon {
+  transform: translateY(-3px);
+}
+
+.hobbyTitle {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Beliefs marquee */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  border-top: 1.5px solid #1d1d1b;
+  border-bottom: 1.5px solid #1d1d1b;
+  padding: clamp(1rem, 2.5vw, 1.75rem) 0;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  flex-shrink: 0;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+  list-style: none;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+/* The tools strip keeps moving under the cursor */
+.toolStrip:hover .toolTrack {
+  animation-play-state: running;
+}
+
+.marqueeTrack li {
+  font-family: var(--font-block), sans-serif;
+  font-size: clamp(2rem, 1.2rem + 3.5vw, 4.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.marqueeTrack .outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #1d1d1b;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-100%); }
+}
+
+/*
+ * Tools strip: same marquee, logos instead of words, running the other way.
+ * Every logo gets an identical square, and every slot the same width, so the
+ * marks are the same size and evenly spaced. The gap between the two copies
+ * equals the gap between logos, so the loop has no visible seam.
+ */
+.toolTrack {
+  --mark: clamp(44px, 5vw, 56px);
+  --slot: calc(var(--mark) + clamp(2.25rem, 4.5vw, 3.75rem));
+  gap: 0;
+  padding-right: 0;
+  animation-direction: reverse;
+  animation-duration: 40s;
+}
+
+.marqueeTrack li.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 0 0 var(--slot);
+  width: var(--slot);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+/* The square every logo fits into, centred */
+.toolMark {
+  display: grid;
+  place-items: center;
+  width: var(--mark);
+  height: var(--mark);
+  transition: transform 0.35s var(--ease);
+}
+
+/* Window onto just the visible mark, with the file's own padding cropped away */
+.toolCrop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.toolCrop img {
+  position: absolute;
+  max-width: none;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter 0.35s var(--ease), opacity 0.35s var(--ease);
+}
+
+.toolName {
+  white-space: nowrap;
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.tool:hover .toolMark {
+  transform: translateY(-3px);
+}
+
+.tool:hover .toolCrop img {
+  filter: none;
+  opacity: 1;
+}
+
+.tool:hover .toolName {
+  opacity: 1;
+  transform: none;
+}
+
+/* On touch screens there's no hover, so show logos in colour with their names */
+@media (hover: none) {
+  .toolCrop img {
+    filter: none;
+    opacity: 1;
+  }
+
+  .toolName {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .disciplines {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .discipline:nth-child(odd) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .hobbies {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hobby:nth-child(3n+1) {
+    border-left: 0.5px solid rgba(29, 29, 27, 0.25);
+  }
+
+  .hobby:nth-child(odd) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .portraitWrap {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 560px) {
+  .disciplines {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .discipline,
+  .discipline + .discipline {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .hobbies {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hobby {
+    border-left: none !important;
+  }
+}

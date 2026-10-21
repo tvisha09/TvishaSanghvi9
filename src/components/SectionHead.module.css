@@ -1,0 +1,27 @@
+.head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1d1d1b;
+}
+
+.index {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0.5px solid #1d1d1b;
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
+
+.rule {
+  flex: 0 0 clamp(2rem, 6vw, 5rem);
+  height: 0.5px;
+  background: #1d1d1b;
+}

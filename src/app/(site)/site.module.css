@@ -1,0 +1,14 @@
+/* Starfield stays fixed behind the page while it scrolls */
+.stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Everything starts below the fixed nav, never under it */
+.shell {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--nav-h);
+}

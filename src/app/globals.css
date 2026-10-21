@@ -1,8 +1,17 @@
 :root {
-  --ivory: #f5f1ea;
+  --paper: #ffffff;
   --charcoal: #1c1b19;
   --muted: #8a857c;
   --ease: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Site-wide layout constants: every page uses these */
+  --nav-h: 68px;
+  --maxw: 1320px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-h) + 1rem);
 }
 
 *,
@@ -16,7 +25,7 @@
 html,
 body {
   height: 100%;
-  background: var(--ivory);
+  background: var(--paper);
   color: var(--charcoal);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;

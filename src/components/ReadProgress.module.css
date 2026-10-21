@@ -1,0 +1,12 @@
+.bar {
+  --read: 0;
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  z-index: 49;
+  height: 2px;
+  background: var(--progress, #1d1d1b);
+  transform-origin: left;
+  transform: scaleX(var(--read));
+}

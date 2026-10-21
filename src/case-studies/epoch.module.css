@@ -1,0 +1,213 @@
+/*
+ * Epoch's identity, applied to the whole project page: the slate-blue of its
+ * title type, the mint-and-crimson of the EPOCH wordmark, and the beige and
+ * lilac of its decorative motifs. The shared case-study components read
+ * these variables.
+ */
+.theme {
+  --case-ink: #4a6a86;
+  --case-ink-rgb: 74 106 134;
+  --case-head: #4a6a86;
+  --case-body: #3a3a3a;
+  --case-body-2: #595959;
+  --case-tint: #f7f2e4;
+  --case-soft: #faf6ec;
+  --case-tone2: #90d880;
+  --case-tone3: #b89cf0;
+  --case-ring1: #e8f0d8;
+  --case-ring2: #f1f5e8;
+  --case-ring3: #faf9f3;
+  --case-accent: #b82840;
+  --case-bubble: #b89cf0;
+  --case-num-bg: #e8f0d8;
+  --case-num-pad: 0.3rem 0.65rem;
+  --case-num-color: #4a6a86;
+  --case-card-top: 3px solid #90d880;
+  --case-display: var(--font-block);
+  /* Chapters open on a chevron trail, echoing the deck's orange "<<<<<" marks */
+  --case-rule-border: 0;
+  --case-rule: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='8' viewBox='0 0 28 8'%3E%3Cpath d='M1 1l5 3-5 3M10 1l5 3-5 3M19 1l5 3-5 3' fill='none' stroke='%23e8923c' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    top left / 28px 8px repeat-x;
+  --progress: #b82840;
+}
+
+/* ---------- Brand opener ---------- */
+.brand {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem);
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+  border-radius: clamp(14px, 2vw, 26px);
+  background: #fbf8f0;
+  overflow: hidden;
+}
+
+/* Concentric arcs, top-left (cyan) and bottom-right (mint), like the cover slide */
+.arcs span {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.arcs span:nth-child(1) {
+  top: -3.5rem;
+  left: -3.5rem;
+  width: clamp(9rem, 16vw, 14rem);
+  aspect-ratio: 1;
+  border-width: 2px;
+  border-top-color: #8fd0e8;
+  border-left-color: #8fd0e8;
+}
+
+.arcs span:nth-child(2) {
+  bottom: -4rem;
+  right: -4rem;
+  width: clamp(8rem, 15vw, 13rem);
+  aspect-ratio: 1;
+  border-width: 2px;
+  border-bottom-color: #90d880;
+  border-right-color: #90d880;
+}
+
+/* Pale dot-triangle, bottom-left, like the mustard dot pattern on the slides */
+.dots {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  background-image: radial-gradient(#e8923c 1.6px, transparent 1.6px);
+  background-size: 10px 10px;
+  mask-image: linear-gradient(135deg, #000 35%, transparent 70%);
+  opacity: 0.55;
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+  max-width: 360px;
+  margin-bottom: 1.5rem;
+}
+
+.logo svg {
+  width: 100%;
+  height: auto;
+}
+
+.brandText {
+  position: relative;
+  z-index: 1;
+}
+
+.brandKicker {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e8923c;
+}
+
+.brandLine {
+  margin-top: 0.9rem;
+  max-width: 50ch;
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem);
+  line-height: 1.4;
+  color: #3a3a3a;
+}
+
+.brandLine strong {
+  color: #4a6a86;
+  font-weight: 600;
+}
+
+.brandChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  list-style: none;
+}
+
+.brandChips li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.4rem;
+  border-radius: 999px;
+  background: rgb(74 106 134 / 0.08);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  color: #3a3a3a;
+}
+
+.brandChips i {
+  width: 0.9rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgb(58 58 58 / 0.25);
+}
+
+/* ---------- Lab-equipment illustration ---------- */
+.lab {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.labVapour circle,
+.labVapour path {
+  animation: labRise 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.labVapour circle:nth-child(2),
+.labVapour path:nth-child(7) {
+  animation-delay: -0.6s;
+}
+
+.labVapour circle:nth-child(3),
+.labVapour path:nth-child(8) {
+  animation-delay: -1.4s;
+}
+
+.labVapour circle:nth-child(4) {
+  animation-delay: -2s;
+}
+
+.labVapour circle:nth-child(5) {
+  animation-delay: -0.9s;
+}
+
+.labVapour circle:nth-child(6) {
+  animation-delay: -1.7s;
+}
+
+@keyframes labRise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.7);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px) scale(1.1);
+  }
+}
+
+@media (max-width: 760px) {
+  .logo {
+    max-width: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .labVapour circle,
+  .labVapour path {
+    animation: none;
+  }
+}

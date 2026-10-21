@@ -1,0 +1,277 @@
+.showcase {
+  padding: clamp(1.5rem, 3.5vw, 3rem) clamp(1rem, 3vw, 2.5rem);
+  border: 1px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.15);
+  border-radius: clamp(16px, 2vw, 28px);
+  background: radial-gradient(ellipse at 30% 70%, var(--paper), var(--case-soft, #f6f6f4) 70%);
+  overflow: hidden;
+}
+
+/* ---------- Stepper ---------- */
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  list-style: none;
+}
+
+/* The line the dots sit on, from the first dot's centre to the last */
+.steps::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  left: calc(50% / var(--n));
+  right: calc(50% / var(--n));
+  height: 2px;
+  background: var(--case-accent, var(--case-ink, #1d1d1b));
+  transform: translateY(-50%);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--case-accent, var(--case-ink, #1d1d1b));
+  font-family: var(--font-mono), monospace;
+  font-size: 0.66rem;
+  font-weight: 500;
+  color: var(--paper);
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.done .dot {
+  background: var(--case-accent, var(--case-ink, #1d1d1b));
+}
+
+.current .dot {
+  background: var(--case-ink, #1d1d1b);
+  border-color: var(--case-ink, #1d1d1b);
+  transform: scale(1.12);
+}
+
+.step:hover .dot {
+  transform: scale(1.12);
+}
+
+.stepLabel {
+  font-size: clamp(0.72rem, 0.6rem + 0.35vw, 0.95rem);
+  line-height: 1.25;
+  text-align: center;
+  color: var(--muted);
+  transition: color 0.3s var(--ease);
+}
+
+.current .stepLabel {
+  color: var(--case-head, var(--case-ink, #1d1d1b));
+  font-weight: 600;
+}
+
+.step:hover .stepLabel,
+.step:focus-visible .stepLabel {
+  color: var(--case-head, var(--case-ink, #1d1d1b));
+}
+
+/* ---------- Phones beside their story ---------- */
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-top: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  height: clamp(380px, 42vw, 580px);
+}
+
+.phone {
+  position: absolute;
+  bottom: 0;
+  left: 58%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 9% / 4.5%;
+  translate: -50% 0;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(0 22px 30px rgb(var(--case-ink-rgb, 29 29 27) / 0.18));
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.behind {
+  cursor: pointer;
+}
+
+.phone img {
+  position: absolute;
+  max-width: none;
+}
+
+.info {
+  align-self: center;
+}
+
+.count {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.name {
+  margin-top: 0.5rem;
+  font-family: var(--case-display, var(--font-block)), sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 1.1rem + 1.3vw, 2.4rem);
+  line-height: 1.05;
+  color: var(--case-head, inherit);
+  animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.text {
+  margin-top: 0.75rem;
+  max-width: 40ch;
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.35rem);
+  line-height: 1.35;
+  color: var(--case-body, #3a3935);
+  animation: rise 0.55s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.25rem;
+  border-top: 1px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.2);
+  list-style: none;
+}
+
+.features li {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgb(var(--case-ink-rgb, 29 29 27) / 0.12);
+  animation: rise 0.55s calc(0.1s + var(--i) * 0.06s) cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.features b {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--case-head, inherit);
+}
+
+/* A small bubble before each feature, like the brand's sea foam */
+.features b::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--case-accent, var(--case-ink, #1d1d1b));
+  transform: translateY(-0.05rem);
+}
+
+.features span {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--case-body-2, #4a4843);
+}
+
+.arrows {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.arrows button {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border: 1.5px solid var(--case-ink, #1d1d1b);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--case-ink, #1d1d1b);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+.arrows button:hover,
+.arrows button:focus-visible {
+  background: var(--case-ink, #1d1d1b);
+  color: var(--paper);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (max-width: 860px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stage {
+    height: clamp(340px, 80vw, 480px);
+  }
+}
+
+@media (max-width: 640px) {
+  .stepLabel {
+    font-size: 0.62rem;
+  }
+
+  .dot {
+    width: 1.25rem;
+  }
+
+  .steps::before {
+    top: 0.625rem;
+  }
+
+  .features li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phone {
+    transition: none;
+  }
+
+  .name,
+  .text,
+  .features li {
+    animation: none;
+  }
+}
