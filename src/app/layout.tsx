@@ -51,7 +51,7 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Creative Director",
+  title: "TvishaSanghvi9",
   description: "I design what you haven't said yet.",
 };
 
